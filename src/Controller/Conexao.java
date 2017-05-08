@@ -12,16 +12,19 @@ import java.sql.SQLException;
 public class Conexao {
 
     private static String USER = "root";
-    private static String PASS = "root";
-    private static String URL = "jdbc:mysql://localhost/db_travessia";
+    private static String PASS = "1234";
+    private static String URL = "jdbc:mysql://localhost/catraia";
 
     public static Connection conectar() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASS);
 
     }
-    
-    
-    public void main(String... args) throws SQLException{
-        Conexao.conectar();
+   
+    public static void main(String [] args) throws SQLException{
+        Connection c = Conexao.conectar();
+        
+        
+        System.out.println("Conexão.class");
     }
+    
 }
