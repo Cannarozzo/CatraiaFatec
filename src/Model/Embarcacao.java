@@ -12,18 +12,25 @@ package Model;
 public class Embarcacao {
 
     private Integer id;
-    
+
     private Integer inscricao;
     private String nome;
-    private Integer responsavel;
+    private Integer responsavelId;
 
     public Embarcacao() {
     }
-
+    
     public Embarcacao(Integer inscricao, String nome, Integer responsavel) {
         this.inscricao = inscricao;
         this.nome = nome;
-        this.responsavel = responsavel;
+        this.responsavelId = responsavelId;
+    }
+
+    public Embarcacao(Integer id, Integer inscricao, String nome, Integer responsavel) {
+        this.id = id;
+        this.inscricao = inscricao;
+        this.nome = nome;
+        this.responsavelId = responsavelId;
     }
 
     public Integer getId() {
@@ -50,11 +57,11 @@ public class Embarcacao {
         this.nome = nome;
     }
 
-    public Integer getResponsavel() {
-        return responsavel;
+    public Integer getResponsavelId() {
+        return responsavelId;
     }
 
     public void setResponsavel(Integer responsavel) {
-        this.responsavel = responsavel;
+        this.responsavelId = responsavel;
     }
 }
