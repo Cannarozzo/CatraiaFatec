@@ -10,6 +10,11 @@ public class Responsavel {
         this.nome = nome;
         this.senha = senha;
     }
+      public Responsavel(Integer id, String nome, String senha) {
+          this.id = id;
+        this.nome = nome;
+        this.senha = senha;
+    }
 
     public Integer getId() {
         return id;

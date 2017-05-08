@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class Conexao {
 
     private static String USER = "root";
-    private static String PASS = "1234";
+    private static String PASS = "root";
     private static String URL = "jdbc:mysql://localhost/catraia";
 
     public static Connection conectar() throws SQLException {

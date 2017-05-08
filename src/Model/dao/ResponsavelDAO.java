@@ -9,50 +9,115 @@ import Controller.Conexao;
 import Model.Responsavel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ResponsavelDAO {
 
     private Connection conn;
     private static final String INSERIR = "insert into Responsavel(nome,senha) values (?,?)";
     private static final String REMOVER = "delete from Responsavel where id = ? ";
-    private static final String ALTERAR = "";
-    private static final String MOSTRAR = "";
+    private static final String ALTERAR = "update Responsavel set nome = ?, senha = ? where id = ? ";
+    private static final String PEGAR = "select * from Responsavel where id = ?";
+    private static final String LISTARTODOS = "select * from Responsavel ORDER BY id";
 
     public ResponsavelDAO() throws SQLException {
         this.conn = Conexao.conectar();
     }
+
     public void inserir(Responsavel r) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement(INSERIR);
         stmt.setString(1, r.getNome());
         stmt.setString(2, r.getSenha());
         stmt.execute();
     }
+
     public void remover(Responsavel r) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement(REMOVER);
         stmt.setInt(1, r.getId());
         stmt.execute();
+        stmt.close();
+        this.conn.close();
     }
-    
-    public void alterar(Responsavel r){
-        
+
+    public void alterar(Responsavel r) throws SQLException {
+        try {
+            PreparedStatement stmt = conn.prepareStatement(ALTERAR);
+            stmt.setString(1, r.getNome());
+            stmt.setString(2, r.getSenha());
+            stmt.setInt(3, r.getId());
+            stmt.execute();
+            stmt.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ResponsavelDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.conn.close();
+        }
     }
-    
-    public void getResponsavel(Responsavel r){
-        
+
+    public Responsavel getResponsavel(Responsavel r) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement(PEGAR);
+        stmt.setInt(1, r.getId());
+        ResultSet rs = stmt.executeQuery();
+
+        Responsavel responsavel = null;
+        if (rs.first()) {
+            responsavel
+                    = new Responsavel(rs.getInt("id"),
+                            rs.getString("nome"),
+                            rs.getString("senha"));
+        }
+        return responsavel;
     }
-    
+
+    public List<Responsavel> listarResponsaveis() throws SQLException {
+        List<Responsavel> responsaveis = new ArrayList<>();
+        PreparedStatement stmt = conn.prepareStatement(LISTARTODOS);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            Responsavel r
+                    = new Responsavel(rs.getInt("id"),
+                             rs.getString("nome"),
+                             rs.getString("senha"));
+            responsaveis.add(r);
+        }
+        return responsaveis;
+
+    }
+
     public static void main(String... args) throws SQLException {
-        /* 1
-        ResponsavelDAO rdao = new ResponsavelDAO();
+        /* Inserir
          Responsavel r = new Responsavel("Matheus", "123");
          rdao.inserir(r);
-        */
-        
-        /*
+         */
+
+ /* pegar
+        ResponsavelDAO rdao = new ResponsavelDAO();
+        Responsavel r = new Responsavel();
+        r.setId(1);
+        r = rdao.getResponsavel(r);
+        System.out.println(r.getNome());
+         */
+         
+       List<Responsavel> rs = new ResponsavelDAO().listarResponsaveis();
+       for(Responsavel r : rs){
+           System.out.println(r.getId() +" "+ r.getNome() +" "+ r.getSenha());
+       }
+ 
+ /* update
+        ResponsavelDAO rdao = new ResponsavelDAO();
+        Responsavel r = new Responsavel(1,"Felipe","321");
+        rdao.alterar(r);
+         */
+ /* Remover
         Responsavel r = new Responsavel();
         r.setId(1);
         rdao.remover(r);
-        */
+         */
     }
 }
