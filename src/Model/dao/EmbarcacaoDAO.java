@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +26,8 @@ public class EmbarcacaoDAO {
     private final String SELECAO = "select * from Embarcacao where id = ? ";
     private final String EDICAO = "update Embarcacao set incricao = ?, nome = ? , id_responsavel = ? where id = ? ";
     private final String REMOCAO = "delete from Embarcacao where id = ? ";
-
+    private final String LISTAR = "select * from Embarcacao";
+    
     public EmbarcacaoDAO() throws SQLException {
         conn = new Conexao().conectar();
     }
@@ -68,9 +70,19 @@ public class EmbarcacaoDAO {
 
     }
 
-    public List<Embarcacao> listar() {
-
-        return null;
+    public List<Embarcacao> listar() throws SQLException {
+         PreparedStatement stmt = conn.prepareStatement(LISTAR);
+         ResultSet rs = stmt.executeQuery();
+         List<Embarcacao> embarcacoes = new ArrayList<>();
+         while(rs.next()){
+             Embarcacao emb = 
+                     new Embarcacao(rs.getInt("id")
+                                    ,rs.getInt("incricao")
+                                    ,rs.getString("nome")
+                                    ,rs.getInt("id_responsavel"));                                            
+            embarcacoes.add(emb);                
+         }        
+        return embarcacoes;
     }
 
     public static void main(String[] args) throws SQLException {
@@ -103,10 +115,24 @@ public class EmbarcacaoDAO {
         edao.editar(e);
          */
          
+        /*
         EmbarcacaoDAO edao = new EmbarcacaoDAO();
         Embarcacao e = new Embarcacao();
         e.setId(1);
         edao.remover(e);
-
+        */
+        
+       
+        
+        
+        EmbarcacaoDAO edao = new EmbarcacaoDAO();
+        Embarcacao e = new Embarcacao();
+        List<Embarcacao> embs = edao.listar();
+        
+       for(Embarcacao c : embs){
+           System.out.println(c.getNome());
+       }
+      
+        
     }
 }
