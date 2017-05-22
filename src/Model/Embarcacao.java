@@ -20,13 +20,17 @@ public class Embarcacao {
     public Embarcacao() {
     }
     
-    public Embarcacao(Integer inscricao, String nome, Integer responsavel) {
+    
+    // staticbinding para inserção de um novo objeto
+    public Embarcacao(Integer inscricao, String nome, Integer responsavelId) {
         this.inscricao = inscricao;
         this.nome = nome;
         this.responsavelId = responsavelId;
     }
 
-    public Embarcacao(Integer id, Integer inscricao, String nome, Integer responsavel) {
+    
+    //Staticbiding para criação de um objeto vindo do banco de dados
+    public Embarcacao(Integer id, Integer inscricao, String nome, Integer responsavelId) {
         this.id = id;
         this.inscricao = inscricao;
         this.nome = nome;
