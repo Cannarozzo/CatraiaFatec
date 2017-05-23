@@ -10,18 +10,22 @@ package Model;
  * @author Matheus
  */
 public class Marinheiro {
-    
+
     private Integer id;
     private String nome;
-    private Integer habilitacao;
+    private String habilitacao;
 
-    public Marinheiro(Integer id, String nome, Integer habilitacao) {
+    public Marinheiro(Integer id, String nome, String habilitacao) {
         this.id = id;
         this.nome = nome;
         this.habilitacao = habilitacao;
     }
 
-    
+    public Marinheiro(String nome, String habilitacao) {
+        this.nome = nome;
+        this.habilitacao = habilitacao;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -38,14 +42,13 @@ public class Marinheiro {
         this.nome = nome;
     }
 
-    public Integer getHabilitacao() {
+    public String getHabilitacao() {
         return habilitacao;
     }
 
-    public void setHabilitacao(Integer habilitacao) {
+    public void setHabilitacao(String habilitacao) {
         this.habilitacao = habilitacao;
     }
-    
-        
-    
+
+
 }
