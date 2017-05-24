@@ -42,25 +42,27 @@ public class JF_DASHBOARDFAKE {
                     Integer id = s.nextInt();
                     Usuario uDigitado = new Usuario();
                     uDigitado.setId(id);
-                    usuarioController.carregarListaUsuarios();
+                    usuarioController.carregarUsuario(uDigitado); //Carrega o Usuário para um atributo do controller. Pode ser subistutuído pelo retorno do método ao invés de um atributo. Objeto é guardar o estado
                     Usuario u = usuarioController.getUsuarioc();
                     
-                    System.out.println("Email do usuário: \n" + u.getEmail() +
-                                       "Senha do usuário: \n" + u.getSenha() +
-                                       "Nome do usuário \n" + u.getNome());
+                    System.out.println("Email do usuário: " + u.getEmail() +
+                                       "\nSenha do usuário: " + u.getSenha() +
+                                       "\nNome do usuário " + u.getNome());
                     break;
                 case 3 :
                     usuarioController.carregarListaUsuarios();
                     for(Usuario uu : usuarioController.getUsuariosc()){
-                        System.out.println("================================");
+                       
                         System.out.println("Email do usuário: " + uu.getEmail() +
-                                       "Senha do usuário: " + uu.getSenha() +
-                                       "Nome do usuário " + uu.getNome());
-                        System.out.println("================================");
+                                       "| Senha do usuário: " + uu.getSenha() +
+                                       "| Nome do usuário " + uu.getNome());
+                         System.out.println("================================");
+                        
                     }
                     System.out.println("Total de Usuários: " + usuarioController.getUsuariosc().size());
                     break;
             }
+            System.out.println("");
 
         }
 

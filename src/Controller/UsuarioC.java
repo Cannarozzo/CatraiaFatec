@@ -18,7 +18,6 @@ import java.util.List;
 public class UsuarioC {
     private List<Usuario> usuariosc;
     private Usuario usuarioc;
-    private UsuarioDAO udao;
     
     
     public UsuarioC(){
@@ -45,13 +44,13 @@ public class UsuarioC {
     
     
     public void inserirUsuario(Usuario u) throws SQLException{
-        udao.inserir(u);
+        new UsuarioDAO().inserir(u);
     }
     public void carregarListaUsuarios() throws SQLException{
-        this.usuariosc = udao.listar();
+        this.usuariosc = new UsuarioDAO().listar();
     }    
     public void carregarUsuario(Usuario u) throws SQLException{
-        this.usuarioc = udao.buscar(u);       
+        this.usuarioc = new UsuarioDAO().buscar(u);
     }
     
 }
