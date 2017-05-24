@@ -81,7 +81,7 @@ public class MarinheiroDAO {
     }
     
     public static void main(String[] args) throws SQLException{
-        Marinheiro m = new Marinheiro("Jose","5555555");
+        Marinheiro m = new Marinheiro("Fernando","33333");
         MarinheiroDAO mdao = new MarinheiroDAO();
        // mdao.inserir(m);
        
@@ -91,13 +91,20 @@ public class MarinheiroDAO {
         m = mdao.buscar(m);
         System.out.println(m.getNome());
         */
-        
+       
+       /* 
        m.setNome("Fulano");
        m.setHabilitacao("88888888");
        mdao.editar(m);
+       */
        
-       
+       /*
        List<Marinheiro> marinheiros = mdao.listar();
+     
+       for(Marinheiro x : marinheiros){
+           System.out.println(x.getNome());   
+       }
+*/
        
     }
     
