@@ -43,7 +43,7 @@ public class JF_DASHBOARDFAKE {
                     Usuario uDigitado = new Usuario();
                     uDigitado.setId(id);
                     usuarioController.carregarUsuario(uDigitado); //Carrega o Usuário para um atributo do controller. Pode ser subistutuído pelo retorno do método ao invés de um atributo. Objeto é guardar o estado
-                    Usuario u = usuarioController.getUsuarioc();
+                    Usuario u = usuarioController.getUsuarioC();
                     
                     System.out.println("Email do usuário: " + u.getEmail() +
                                        "\nSenha do usuário: " + u.getSenha() +
@@ -51,7 +51,7 @@ public class JF_DASHBOARDFAKE {
                     break;
                 case 3 :
                     usuarioController.carregarListaUsuarios();
-                    for(Usuario uu : usuarioController.getUsuariosc()){
+                    for(Usuario uu : usuarioController.getUsuariosC()){
                        
                         System.out.println("Email do usuário: " + uu.getEmail() +
                                        "| Senha do usuário: " + uu.getSenha() +
@@ -59,7 +59,7 @@ public class JF_DASHBOARDFAKE {
                          System.out.println("================================");
                         
                     }
-                    System.out.println("Total de Usuários: " + usuarioController.getUsuariosc().size());
+                    System.out.println("Total de Usuários: " + usuarioController.getUsuariosC().size());
                     break;
             }
             System.out.println("");

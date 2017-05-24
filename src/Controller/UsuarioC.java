@@ -16,41 +16,45 @@ import java.util.List;
  * @author PC1
  */
 public class UsuarioC {
-    private List<Usuario> usuariosc;
-    private Usuario usuarioc;
+    private List<Usuario> usuariosC;
+    private Usuario usuarioC;
     
     
     public UsuarioC(){
         // EXEMPLO
-        this.usuariosc = new ArrayList<>();
-        this.usuarioc = new Usuario();
+        this.usuariosC = new ArrayList<>();
+        this.usuarioC = new Usuario();
     }
 
-    public List<Usuario> getUsuariosc() {
-        return usuariosc;
+    public List<Usuario> getUsuariosC() {
+        return usuariosC;
     }
 
-    public void setUsuariosc(List<Usuario> usuariosc) {
-        this.usuariosc = usuariosc;
+    public void setUsuariosC(List<Usuario> usuariosC) {
+        this.usuariosC = usuariosC;
     }
 
-    public Usuario getUsuarioc() {
-        return usuarioc;
+    public Usuario getUsuarioC() {
+        return usuarioC;
     }
-    public void setUsuarioc(Usuario usuarioc) {
-        this.usuarioc = usuarioc;
+
+    public void setUsuarioC(Usuario usuarioC) {
+        this.usuarioC = usuarioC;
     }
+
+  
     
     
     
     public void inserirUsuario(Usuario u) throws SQLException{
         new UsuarioDAO().inserir(u);
     }
+   
     public void carregarListaUsuarios() throws SQLException{
-        this.usuariosc = new UsuarioDAO().listar();
+        this.usuariosC = new UsuarioDAO().listar();
     }    
     public void carregarUsuario(Usuario u) throws SQLException{
-        this.usuarioc = new UsuarioDAO().buscar(u);
+        this.usuarioC = new UsuarioDAO().buscar(u);
     }
     
 }
