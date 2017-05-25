@@ -49,7 +49,8 @@ public class UsuarioC {
     public void inserirUsuario(Usuario u) throws SQLException{
         new UsuarioDAO().inserir(u);
     }
-   
+    
+  
     public void carregarListaUsuarios() throws SQLException{
         this.usuariosC = new UsuarioDAO().listar();
     }    

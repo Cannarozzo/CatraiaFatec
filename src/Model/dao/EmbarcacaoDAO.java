@@ -46,14 +46,15 @@ public class EmbarcacaoDAO {
         PreparedStatement stmt = conn.prepareStatement(SELECAO);
         stmt.setInt(1, e.getId());
         ResultSet rs = stmt.executeQuery();
-        Embarcacao embarcacao = null;
+        Embarcacao embarcacao = new Embarcacao();
         if (rs.first()) {
-            embarcacao = new Embarcacao(rs.getInt("id"), rs.getInt("incricao"), rs.getString("nome"), rs.getInt("id_responsavel"));
+            embarcacao = new Embarcacao(rs.getInt("id")
+                                       ,rs.getInt("incricao")
+                                       ,rs.getString("nome")
+                                       ,rs.getInt("id_responsavel"));
         }
-
         return embarcacao;
     }
-
     public void editar(Embarcacao e) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement(EDICAO);
         stmt.setInt(1, e.getInscricao());

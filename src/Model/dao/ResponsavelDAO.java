@@ -60,12 +60,12 @@ public class ResponsavelDAO {
         }
     }
 
-    public Responsavel getResponsavel(Responsavel r) throws SQLException {
+    public Responsavel buscar(Responsavel r) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement(PEGAR);
         stmt.setInt(1, r.getId());
         ResultSet rs = stmt.executeQuery();
 
-        Responsavel responsavel = null;
+        Responsavel responsavel = new Responsavel();
         if (rs.first()) {
             responsavel
                     = new Responsavel(rs.getInt("id"),
@@ -75,15 +75,15 @@ public class ResponsavelDAO {
         return responsavel;
     }
 
-    public List<Responsavel> listarResponsaveis() throws SQLException {
+    public List<Responsavel> listar() throws SQLException {
         List<Responsavel> responsaveis = new ArrayList<>();
         PreparedStatement stmt = conn.prepareStatement(LISTARTODOS);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             Responsavel r
                     = new Responsavel(rs.getInt("id"),
-                             rs.getString("nome"),
-                             rs.getString("senha"));
+                            rs.getString("nome"),
+                            rs.getString("senha"));
             responsaveis.add(r);
         }
         return responsaveis;
@@ -103,13 +103,12 @@ public class ResponsavelDAO {
         r = rdao.getResponsavel(r);
         System.out.println(r.getNome());
          */
-         
-       List<Responsavel> rs = new ResponsavelDAO().listarResponsaveis();
-       for(Responsavel r : rs){
-           System.out.println(r.getId() +" "+ r.getNome() +" "+ r.getSenha());
-       }
- 
- /* update
+        List<Responsavel> rs = new ResponsavelDAO().listar();
+        for (Responsavel r : rs) {
+            System.out.println(r.getId() + " " + r.getNome() + " " + r.getSenha());
+        }
+
+        /* update
         ResponsavelDAO rdao = new ResponsavelDAO();
         Responsavel r = new Responsavel(1,"Felipe","321");
         rdao.alterar(r);

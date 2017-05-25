@@ -22,7 +22,7 @@ public class UsuarioDAO {
     private static final String INSERIR = "insert into Usuario(email,senha,nome) values (?,?,?)";
     private static final String REMOVER = "delete from Usuario where id = ? ";
     private static final String EDITAR = "update Usuario set email = ? , nome = ?, senha = ? where id = ? ";
-    private static final String BUSCAR = "select * from Usuario where id = ?";
+    private static final String BUSCAR = "select * from Usuario where nome = ?";
     private static final String LISTARTODOS = "select * from Usuario ORDER BY id";
 
     public void inserir(Usuario u) {
@@ -41,7 +41,6 @@ public class UsuarioDAO {
     }
 
     public void remover(Usuario u) {
-
         PreparedStatement stmt;
         try (Connection conn = Conexao.conectar()) {
             stmt = conn.prepareStatement(REMOVER);
@@ -73,7 +72,7 @@ public class UsuarioDAO {
 
         try (Connection conn = Conexao.conectar()) {
             stmt = conn.prepareStatement(BUSCAR);
-            stmt.setInt(1, u.getId());
+            stmt.setString(1, u.getNome());
             ResultSet rs = stmt.executeQuery();
 
             Usuario usuario = new Usuario();

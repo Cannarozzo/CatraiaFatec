@@ -14,7 +14,8 @@ public class Marinheiro {
     private Integer id;
     private String nome;
     private String habilitacao;
-
+    
+    public Marinheiro(){}
     public Marinheiro(Integer id, String nome, String habilitacao) {
         this.id = id;
         this.nome = nome;

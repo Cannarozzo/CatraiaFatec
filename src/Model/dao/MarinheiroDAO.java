@@ -43,7 +43,7 @@ public class MarinheiroDAO {
         PreparedStatement stmt = conn.prepareStatement(BUSCAR);
         stmt.setInt(1, m.getId());
         ResultSet rs = stmt.executeQuery();
-        Marinheiro marinheiro = null;
+        Marinheiro marinheiro = new Marinheiro();
         if (rs.first()) {
             marinheiro = new Marinheiro(rs.getInt("id"),
                     rs.getString("nome"),

@@ -4,16 +4,19 @@ use catraia;
 
 create table Marinheiro(
 	id INT NOT NULL auto_increment,
-	nome VARCHAR(255),
+	nome VARCHAR(255) NOT NULL,
     habilitacao VARCHAR(255) NOT NULL,
+    UNIQUE(habilitacao,nome),
     primary key(id)
 );
 
+-- Teste, abstrair com Usuario- Campos email,nome, podem pertenner ao usuário.
 create table Responsavel(
 	id INT NOT NULL auto_increment,
     nome VARCHAR(255),
     senha VARCHAR(255),
-	primary key(id)
+	primary key(id),
+    Unique(nome)
 );
 
 

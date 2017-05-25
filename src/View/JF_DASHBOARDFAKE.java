@@ -38,10 +38,10 @@ public class JF_DASHBOARDFAKE {
                     System.out.println("Usuarário cadastrado");
                     break;
                 case 2 :
-                    System.out.println("Digite o ID do usuário: ");
-                    Integer id = s.nextInt();
+                    System.out.println("Digite o Nome do usuário: ");
+                    String nomeB = s.next();
                     Usuario uDigitado = new Usuario();
-                    uDigitado.setId(id);
+                    uDigitado.setNome(nomeB);
                     usuarioController.carregarUsuario(uDigitado); //Carrega o Usuário para um atributo do controller. Pode ser subistutuído pelo retorno do método ao invés de um atributo. Objeto é guardar o estado
                     Usuario u = usuarioController.getUsuarioC();
                     
