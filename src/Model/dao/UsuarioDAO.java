@@ -21,7 +21,7 @@ public class UsuarioDAO {
     //Teste de Try With Resources
     private static final String INSERIR = "insert into Usuario(email,senha,nome) values (?,?,?)";
     private static final String REMOVER = "delete from Usuario where id = ? ";
-    private static final String EDITAR = "update Usuario set email = ? , nome = ?, senha = ? where id = ? ";
+    private static final String EDITAR = "update Usuario set email = ? , senha = ?, nome = ? where id = ? ";
     private static final String BUSCAR = "select * from Usuario where nome = ?";
     private static final String LISTARTODOS = "select * from Usuario ORDER BY id";
 

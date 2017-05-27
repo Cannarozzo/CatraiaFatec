@@ -5,7 +5,7 @@
  */
 package View;
 
-import Controller.UsuarioC;
+import Controller.UsuarioBack;
 import Model.Usuario;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -18,12 +18,14 @@ public class JF_DASHBOARDFAKE {
 
     public static void main(String[] args) throws SQLException {
         Scanner s = new Scanner(System.in);
-        UsuarioC usuarioController = new UsuarioC();
+        UsuarioBack usuarioController = new UsuarioBack();
         int opcao = 0;
         while (true) {
             System.out.println("1 - Inserir Usuário\n"
                     + "2 - Buscar Usuário\n"
                     + "3 - Listar Usuários\n"
+                    + "4 - Editar Usuário\n"
+                    + "5 - Remover Usuário"
             );
             opcao = s.nextInt();
             switch (opcao) {
@@ -60,6 +62,17 @@ public class JF_DASHBOARDFAKE {
                         
                     }
                     System.out.println("Total de Usuários: " + usuarioController.getUsuariosC().size());
+                    break;
+                case 4: 
+                    System.out.println("Digite os valores na sequencia: id email senha nome");
+                    Usuario usuarioEditar = new Usuario(s.nextInt(),s.next(),s.next(),s.next());
+                    usuarioController.editarUsuario(usuarioEditar);                    
+                    break;
+                case 5: 
+                    System.out.println("Digite o ID do usuário para remové-lo: ");
+                    Usuario usuarioRemover = new Usuario();
+                    usuarioRemover.setId(s.nextInt());
+                    usuarioController.removerUSuario(usuarioRemover);                    
                     break;
             }
             System.out.println("");

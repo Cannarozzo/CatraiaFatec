@@ -42,7 +42,7 @@ public class EmbarcacaoDAO {
 
     }
 
-    public Embarcacao buscarEmbarcacao(Embarcacao e) throws SQLException {
+    public Embarcacao buscar(Embarcacao e) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement(SELECAO);
         stmt.setInt(1, e.getId());
         ResultSet rs = stmt.executeQuery();

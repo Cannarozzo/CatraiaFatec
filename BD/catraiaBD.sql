@@ -13,6 +13,7 @@ create table Marinheiro(
 -- Teste, abstrair com Usuario- Campos email,nome, podem pertenner ao usuário.
 create table Responsavel(
 	id INT NOT NULL auto_increment,
+    email VARCHAR(255) NOT NULL ,
     nome VARCHAR(255),
     senha VARCHAR(255),
 	primary key(id),

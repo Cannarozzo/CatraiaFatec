@@ -15,13 +15,13 @@ import java.util.List;
  *
  * @author PC1
  */
-public class UsuarioC {
+public class UsuarioBack {
+
     private List<Usuario> usuariosC;
     private Usuario usuarioC;
-    
-    
-    public UsuarioC(){
-        // EXEMPLO
+
+    public UsuarioBack() {
+        // EXEMPLO backbeam
         this.usuariosC = new ArrayList<>();
         this.usuarioC = new Usuario();
     }
@@ -42,20 +42,32 @@ public class UsuarioC {
         this.usuarioC = usuarioC;
     }
 
-  
-    
-    
-    
-    public void inserirUsuario(Usuario u) throws SQLException{
+    public void inserirUsuario(Usuario u) throws SQLException {
         new UsuarioDAO().inserir(u);
     }
-    
-  
-    public void carregarListaUsuarios() throws SQLException{
-        this.usuariosC = new UsuarioDAO().listar();
-    }    
-    public void carregarUsuario(Usuario u) throws SQLException{
-        this.usuarioC = new UsuarioDAO().buscar(u);
+
+    public void editarUsuario(Usuario u) throws SQLException {
+        new UsuarioDAO().editar(u);
+    }
+
+    public void buscarUsuario(Usuario u) throws SQLException {
+        new UsuarioDAO().buscar(u);
     }
     
+    public void removerUSuario(Usuario u) {
+        new UsuarioDAO().remover(u);
+    }
+
+    public void carregarListaUsuarios() throws SQLException {
+        this.usuariosC = new UsuarioDAO().listar();
+    }
+
+    public void carregarUsuario(Usuario u) throws SQLException {
+        this.usuarioC = new UsuarioDAO().buscar(u);
+    }
+
+    public void editarUsuario(Usuario usuario, String nextLine, String nextLine0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

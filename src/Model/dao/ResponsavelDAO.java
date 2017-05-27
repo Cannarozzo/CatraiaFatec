@@ -19,9 +19,9 @@ import java.util.logging.Logger;
 public class ResponsavelDAO {
 
     private Connection conn;
-    private static final String INSERIR = "insert into Responsavel(nome,senha) values (?,?)";
+    private static final String INSERIR = "insert into Responsavel(email,nome,senha) values (?,?,?)";
     private static final String REMOVER = "delete from Responsavel where id = ? ";
-    private static final String ALTERAR = "update Responsavel set nome = ?, senha = ? where id = ? ";
+    private static final String ALTERAR = "update Responsavel set email = ?, nome = ?, senha = ? where id = ? ";
     private static final String PEGAR = "select * from Responsavel where id = ?";
     private static final String LISTARTODOS = "select * from Responsavel ORDER BY id";
 
@@ -31,8 +31,9 @@ public class ResponsavelDAO {
 
     public void inserir(Responsavel r) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement(INSERIR);
-        stmt.setString(1, r.getNome());
-        stmt.setString(2, r.getSenha());
+        stmt.setString(1, r.getEmail());
+        stmt.setString(2, r.getNome());
+        stmt.setString(3, r.getSenha());
         stmt.execute();
     }
 
@@ -44,7 +45,7 @@ public class ResponsavelDAO {
         this.conn.close();
     }
 
-    public void alterar(Responsavel r) throws SQLException {
+    public void editar(Responsavel r) throws SQLException {
         try {
             PreparedStatement stmt = conn.prepareStatement(ALTERAR);
             stmt.setString(1, r.getNome());
@@ -69,6 +70,7 @@ public class ResponsavelDAO {
         if (rs.first()) {
             responsavel
                     = new Responsavel(rs.getInt("id"),
+                            rs.getString("email"),
                             rs.getString("nome"),
                             rs.getString("senha"));
         }
@@ -82,6 +84,7 @@ public class ResponsavelDAO {
         while (rs.next()) {
             Responsavel r
                     = new Responsavel(rs.getInt("id"),
+                            rs.getString("email"),
                             rs.getString("nome"),
                             rs.getString("senha"));
             responsaveis.add(r);

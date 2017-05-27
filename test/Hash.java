@@ -17,9 +17,9 @@ public class Hash {
     public static void main(String... args) {
         Set<Responsavel> responsaveis = new HashSet();
 
-        Responsavel r = new Responsavel(3, "Fernando", "4343");
-        responsaveis.add(new Responsavel(1, "felipe", "123"));
-        responsaveis.add(new Responsavel(2, "Matheus", "321"));
+        Responsavel r = new Responsavel(3,"fernando@gmail.com" ,"Fernando", "4343");
+        responsaveis.add(new Responsavel(1,"felipe@gmail.com" ,"felipe", "123"));
+        responsaveis.add(new Responsavel(2,"matheus@gmail.com", "Matheus", "321"));
         responsaveis.add(r);
 
         System.out.println(responsaveis);

@@ -29,7 +29,7 @@ public class Usuario {
         this.senha = senha;
         this.nome = nome;
     }
-    
+
     
 
     public Integer getId() {
