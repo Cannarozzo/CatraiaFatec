@@ -8,23 +8,23 @@ public class Responsavel {
     private Integer id;
     private String email;
     private String nome;
-    private String senha;
+    private String cpf;
 
     public Responsavel() {
     }
 
     ;
-    public Responsavel(String email, String nome, String senha) {
+    public Responsavel(String email, String nome, String cpf) {
         this.email = email;
         this.nome = nome;
-        this.senha = senha;
+        this.cpf = cpf;
     }
 
-    public Responsavel(Integer id, String email, String nome, String senha) {
+    public Responsavel(Integer id, String email, String nome, String cpf) {
         this.id = id;
         this.email = email;
         this.nome = nome;
-        this.senha = senha;
+        this.cpf = cpf;
     }
 
     public Integer getId() {
@@ -35,22 +35,6 @@ public class Responsavel {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -58,6 +42,24 @@ public class Responsavel {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+
     
 
     @Override

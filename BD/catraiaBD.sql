@@ -15,7 +15,7 @@ create table Responsavel(
 	id INT NOT NULL auto_increment,
     email VARCHAR(255) NOT NULL ,
     nome VARCHAR(255),
-    senha VARCHAR(255),
+    cpf VARCHAR(255),
 	primary key(id),
     Unique(nome)
 );
@@ -29,7 +29,8 @@ create table Embarcacao(
     primary key(id),
     CONSTRAINT FK_ResponsavelEmbarcarcao 
 		FOREIGN KEY(id_responsavel) 
-		references Responsavel(id)
+		references Responsavel(id),
+	Unique(nome,incricao)
     );
     
 -- Registro da Viagem/ Travessia

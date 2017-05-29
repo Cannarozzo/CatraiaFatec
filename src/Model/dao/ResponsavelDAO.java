@@ -19,10 +19,11 @@ import java.util.logging.Logger;
 public class ResponsavelDAO {
 
     private Connection conn;
-    private static final String INSERIR = "insert into Responsavel(email,nome,senha) values (?,?,?)";
+    private static final String INSERIR = "insert into Responsavel(email,nome,cpf)values (?,?,?)";
     private static final String REMOVER = "delete from Responsavel where id = ? ";
-    private static final String ALTERAR = "update Responsavel set email = ?, nome = ?, senha = ? where id = ? ";
+    private static final String EDITAR = "update Responsavel set email = ?, nome = ?,cpf = ? where id = ? ";
     private static final String PEGAR = "select * from Responsavel where id = ?";
+    private static final String BUSCARPORNOME = "select * from Responsavel where nome = ?";
     private static final String LISTARTODOS = "select * from Responsavel ORDER BY id";
 
     public ResponsavelDAO() throws SQLException {
@@ -33,7 +34,7 @@ public class ResponsavelDAO {
         PreparedStatement stmt = conn.prepareStatement(INSERIR);
         stmt.setString(1, r.getEmail());
         stmt.setString(2, r.getNome());
-        stmt.setString(3, r.getSenha());
+        stmt.setString(3, r.getCpf());
         stmt.execute();
     }
 
@@ -47,10 +48,11 @@ public class ResponsavelDAO {
 
     public void editar(Responsavel r) throws SQLException {
         try {
-            PreparedStatement stmt = conn.prepareStatement(ALTERAR);
-            stmt.setString(1, r.getNome());
-            stmt.setString(2, r.getSenha());
-            stmt.setInt(3, r.getId());
+            PreparedStatement stmt = conn.prepareStatement(EDITAR);
+            stmt.setString(1, r.getEmail());
+            stmt.setString(2, r.getNome());
+            stmt.setString(3, r.getCpf());
+            stmt.setInt(4, r.getId());
             stmt.execute();
             stmt.close();
 
@@ -72,7 +74,7 @@ public class ResponsavelDAO {
                     = new Responsavel(rs.getInt("id"),
                             rs.getString("email"),
                             rs.getString("nome"),
-                            rs.getString("senha"));
+                            rs.getString("cpf"));
         }
         return responsavel;
     }
@@ -86,11 +88,28 @@ public class ResponsavelDAO {
                     = new Responsavel(rs.getInt("id"),
                             rs.getString("email"),
                             rs.getString("nome"),
-                            rs.getString("senha"));
+                            rs.getString("cpf"));
             responsaveis.add(r);
         }
         return responsaveis;
 
+    }
+
+    public Responsavel buscarPorNome(Responsavel r) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement(BUSCARPORNOME);
+        stmt.setString(1, r.getNome());
+        System.out.println(r.getNome());
+        ResultSet rs = stmt.executeQuery();
+
+        Responsavel responsavel = new Responsavel();
+        if (rs.first()) {
+            responsavel
+                    = new Responsavel(rs.getInt("id"),
+                            rs.getString("email"),
+                            rs.getString("nome"),
+                            rs.getString("cpf"));
+        }
+        return responsavel;
     }
 
     public static void main(String... args) throws SQLException {
@@ -108,9 +127,14 @@ public class ResponsavelDAO {
          */
         List<Responsavel> rs = new ResponsavelDAO().listar();
         for (Responsavel r : rs) {
-            System.out.println(r.getId() + " " + r.getNome() + " " + r.getSenha());
+            System.out.println(r.getId() + " " + r.getNome() + " " + r.getCpf());
         }
-
+            
+        Responsavel rr = new Responsavel();
+        rr.setNome("foo");
+        Responsavel rnome = new ResponsavelDAO().buscarPorNome(rr);
+        System.out.println(rnome.getId());
+        
         /* update
         ResponsavelDAO rdao = new ResponsavelDAO();
         Responsavel r = new Responsavel(1,"Felipe","321");

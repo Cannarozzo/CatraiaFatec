@@ -6,7 +6,9 @@
 package Controller;
 
 import Model.Embarcacao;
+import Model.Responsavel;
 import Model.dao.EmbarcacaoDAO;
+import Model.dao.ResponsavelDAO;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,16 +18,18 @@ import java.util.List;
  */
 public class EmbarcacaoBack {
 
-    List<Embarcacao> embarcacoes;
+ //   List<Embarcacao> embarcacoes;
+    List<Responsavel> responsaveis;
     Embarcacao embarcacao;
 
-    public List<Embarcacao> getEmbarcacoes() {
-        return embarcacoes;
+    
+    public EmbarcacaoBack() throws SQLException{
+        this.responsaveis = new ResponsavelDAO().listar();
     }
 
-    public void setEmbarcacoes(List<Embarcacao> embarcacoes) {
-        this.embarcacoes = embarcacoes;
-    }
+   
+   
+    
 
     public Embarcacao getEmbarcacao() {
         return embarcacao;
@@ -51,4 +55,14 @@ public class EmbarcacaoBack {
         new EmbarcacaoDAO().remover(e);
     }
 
+    // Auxíliares
+    
+    public Responsavel buscarResponsavelPorNome(Responsavel r) throws SQLException{
+        
+        return new ResponsavelDAO().buscarPorNome(r);
+        
+    }
+    public List<Responsavel> listarResponsaveis() throws SQLException{
+        return new ResponsavelDAO().listar();
+    }
 }
