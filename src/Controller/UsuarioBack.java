@@ -10,6 +10,10 @@ import Model.dao.UsuarioDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.autorizacao.Administrador;
+import model.autorizacao.Funcionario1;
+import model.autorizacao.Funcionario2;
+import model.autorizacao.UsuarioAuth;
 
 /**
  *
@@ -19,11 +23,17 @@ public class UsuarioBack {
 
     private List<Usuario> usuariosC;
     private Usuario usuarioC;
+    private UsuarioAuth autenticacaoAutorizacao;
 
     public UsuarioBack() {
         // EXEMPLO backbeam
         this.usuariosC = new ArrayList<>();
         this.usuarioC = new Usuario();
+        this.autenticacaoAutorizacao = new Funcionario1(new Funcionario2(new Administrador(null)));
+    }
+
+    public UsuarioAuth getAutenticacaoAutorizacao() {
+        return autenticacaoAutorizacao;
     }
 
     public List<Usuario> getUsuariosC() {
@@ -53,7 +63,7 @@ public class UsuarioBack {
     public void buscarUsuario(Usuario u) throws SQLException {
         new UsuarioDAO().buscar(u);
     }
-    
+
     public void removerUSuario(Usuario u) {
         new UsuarioDAO().remover(u);
     }
@@ -68,6 +78,10 @@ public class UsuarioBack {
 
     public void editarUsuario(Usuario usuario, String nextLine, String nextLine0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Usuario logarUsuario(Usuario u) {
+        return new UsuarioDAO().logar(u);
     }
 
 }

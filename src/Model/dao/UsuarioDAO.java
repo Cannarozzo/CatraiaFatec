@@ -24,7 +24,34 @@ public class UsuarioDAO {
     private static final String EDITAR = "update Usuario set email = ? , senha = ?, nome = ?, credencial = ? where id = ? ";
     private static final String BUSCAR = "select * from Usuario where nome = ?";
     private static final String LISTARTODOS = "select * from Usuario ORDER BY id";
+    
+    private static final String LOGIN = "select * from Usuario where email = ? and senha = ? ";
 
+    
+    
+    public Usuario logar(Usuario u){
+       PreparedStatement stmt;
+
+        try (Connection conn = Conexao.conectar()) {
+            stmt = conn.prepareStatement(LOGIN);
+            stmt.setString(1, u.getEmail());
+            stmt.setString(2, u.getSenha());
+            ResultSet rs = stmt.executeQuery();
+
+            Usuario usuario = new Usuario();
+            if (rs.first()) {
+                usuario
+                        = new Usuario(rs.getInt("id"),
+                                rs.getString("email"),
+                                rs.getString("senha"),
+                                rs.getString("nome"),
+                                rs.getString("credencial"));
+            }
+            return usuario;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void inserir(Usuario u) {
 
         PreparedStatement stmt;

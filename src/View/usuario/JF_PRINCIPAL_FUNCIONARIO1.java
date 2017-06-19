@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.funcionario1;
+package View.usuario;
 
 import View.JF_Embarcacao;
 import View.JF_Marinheiro;
@@ -16,12 +16,12 @@ import java.util.logging.Logger;
  *
  * @author PC1
  */
-public class JF_PRINCIPAL extends javax.swing.JFrame {
+public class JF_PRINCIPAL_FUNCIONARIO1 extends javax.swing.JFrame {
 
     /**
      * Creates new form JF_PRINCIPAL
      */
-    public JF_PRINCIPAL() {
+    public JF_PRINCIPAL_FUNCIONARIO1() {
         initComponents();
     }
 
@@ -128,7 +128,7 @@ public class JF_PRINCIPAL extends javax.swing.JFrame {
         try {
             new JF_Embarcacao().setVisible(true);
         } catch (SQLException ex) {
-            Logger.getLogger(JF_PRINCIPAL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JF_PRINCIPAL_FUNCIONARIO1.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jMenuItemAdicionarEmbarcacaoActionPerformed
@@ -159,20 +159,21 @@ public class JF_PRINCIPAL extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JF_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_PRINCIPAL_FUNCIONARIO1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JF_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_PRINCIPAL_FUNCIONARIO1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JF_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_PRINCIPAL_FUNCIONARIO1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JF_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_PRINCIPAL_FUNCIONARIO1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_PRINCIPAL().setVisible(true);
+                new JF_PRINCIPAL_FUNCIONARIO1().setVisible(true);
             }
         });
     }

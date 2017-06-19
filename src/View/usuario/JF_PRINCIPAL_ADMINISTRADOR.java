@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.administrador;
+package view.usuario;
 
 import View.JF_USUARIO;
 
@@ -11,12 +11,12 @@ import View.JF_USUARIO;
  *
  * @author PC1
  */
-public class JF_PRINCIPAL extends javax.swing.JFrame {
+public class JF_PRINCIPAL_ADMINISTRADOR extends javax.swing.JFrame {
 
     /**
      * Creates new form JF_PRINCIPAL
      */
-    public JF_PRINCIPAL() {
+    public JF_PRINCIPAL_ADMINISTRADOR() {
         initComponents();
     }
 
@@ -88,20 +88,21 @@ public class JF_PRINCIPAL extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JF_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_PRINCIPAL_ADMINISTRADOR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JF_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_PRINCIPAL_ADMINISTRADOR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JF_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_PRINCIPAL_ADMINISTRADOR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JF_PRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JF_PRINCIPAL_ADMINISTRADOR.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_PRINCIPAL().setVisible(true);
+                new JF_PRINCIPAL_ADMINISTRADOR().setVisible(true);
             }
         });
     }

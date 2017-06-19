@@ -5,17 +5,24 @@
  */
 package View;
 
+import Controller.UsuarioBack;
+import Model.Usuario;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PC1
  */
 public class JF_LOGIN extends javax.swing.JFrame {
-
+    private UsuarioBack usuarioController ;
     /**
      * Creates new form JF_INICIAL
      */
     public JF_LOGIN() {
         initComponents();
+        this.usuarioController = new UsuarioBack();
+        this.setTitle("Tela de Login");
     }
 
     /**
@@ -40,10 +47,17 @@ public class JF_LOGIN extends javax.swing.JFrame {
         jLabel2.setText("Senha");
 
         jButtonEntrar.setText("Entrar");
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntrarActionPerformed(evt);
+            }
+        });
 
-        jTextFieldEmail.setText("email");
-
-        jTextFieldSenha.setText("senha");
+        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEmailActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,6 +95,29 @@ public class JF_LOGIN extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEmailActionPerformed
+
+    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+        JFrame tela ;
+        Usuario usuarioJFrame = new Usuario();
+        usuarioJFrame.setEmail(jTextFieldEmail.getText());
+        usuarioJFrame.setSenha(jTextFieldSenha.getText());
+        
+        Usuario usuarioBD;
+        usuarioBD = usuarioController.logarUsuario(usuarioJFrame);
+        if(usuarioBD.getCredencial() == null){
+            usuarioBD.setCredencial("sem credencial");
+        }
+      
+        tela = usuarioController.getAutenticacaoAutorizacao().autorizar(usuarioBD);
+        tela.setVisible(true);
+        if(tela instanceof JF_LOGIN)
+            JOptionPane.showMessageDialog(rootPane, "Usuário não Autenticado");
+        this.dispose();
+    }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     /**
      * @param args the command line arguments
