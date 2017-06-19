@@ -19,9 +19,9 @@ import java.util.logging.Logger;
 public class UsuarioDAO {
     // PROVAVEL PADRÃO a ser seguido
     //Teste de Try With Resources
-    private static final String INSERIR = "insert into Usuario(email,senha,nome) values (?,?,?)";
+    private static final String INSERIR = "insert into Usuario(email,senha,nome,credencial) values (?,?,?,?)";
     private static final String REMOVER = "delete from Usuario where id = ? ";
-    private static final String EDITAR = "update Usuario set email = ? , senha = ?, nome = ? where id = ? ";
+    private static final String EDITAR = "update Usuario set email = ? , senha = ?, nome = ?, credencial = ? where id = ? ";
     private static final String BUSCAR = "select * from Usuario where nome = ?";
     private static final String LISTARTODOS = "select * from Usuario ORDER BY id";
 
@@ -33,6 +33,7 @@ public class UsuarioDAO {
             stmt.setString(1, u.getEmail());
             stmt.setString(2, u.getSenha());
             stmt.setString(3, u.getNome());
+            stmt.setString(4, u.getCredencial());
             stmt.execute();
             stmt.close();
         } catch (SQLException ex) {
@@ -59,6 +60,7 @@ public class UsuarioDAO {
             stmt.setString(1, u.getEmail());
             stmt.setString(2, u.getSenha());
             stmt.setString(3, u.getNome());
+            stmt.setString(4, u.getCredencial());
             stmt.setInt(4, u.getId());
             stmt.execute();
             stmt.close();
@@ -81,7 +83,8 @@ public class UsuarioDAO {
                         = new Usuario(rs.getInt("id"),
                                 rs.getString("email"),
                                 rs.getString("senha"),
-                                rs.getString("nome"));
+                                rs.getString("nome"),
+                                rs.getString("credencial"));
             }
             return usuario;
         } catch (SQLException e) {
@@ -101,7 +104,8 @@ public class UsuarioDAO {
                         = new Usuario(rs.getInt("id"),
                                 rs.getString("email"),
                                 rs.getString("senha"),
-                                rs.getString("nome"));
+                                rs.getString("nome"),
+                                rs.getString("credencial"));
                 usuarios.add(u);
             }
             return usuarios;

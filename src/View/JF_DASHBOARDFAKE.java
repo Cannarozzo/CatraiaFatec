@@ -36,7 +36,9 @@ public class JF_DASHBOARDFAKE {
                     String senha = s.next();
                     System.out.println("Digite o nome: ");
                     String nome = s.next();
-                    usuarioController.inserirUsuario(new Usuario(email,senha,nome));
+                    System.out.println("Digite uma credencial:");
+                    String credencial = s.next();
+                    usuarioController.inserirUsuario(new Usuario(email,senha,nome,credencial));
                     System.out.println("Usuarário cadastrado");
                     break;
                 case 2 :
@@ -65,7 +67,7 @@ public class JF_DASHBOARDFAKE {
                     break;
                 case 4: 
                     System.out.println("Digite os valores na sequencia: id email senha nome");
-                    Usuario usuarioEditar = new Usuario(s.nextInt(),s.next(),s.next(),s.next());
+                    Usuario usuarioEditar = new Usuario(s.nextInt(),s.next(),s.next(),s.next(),s.next());
                     usuarioController.editarUsuario(usuarioEditar);                    
                     break;
                 case 5: 

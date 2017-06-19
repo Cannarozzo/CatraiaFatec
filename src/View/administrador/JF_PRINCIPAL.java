@@ -5,6 +5,8 @@
  */
 package View.administrador;
 
+import View.JF_USUARIO;
+
 /**
  *
  * @author PC1
@@ -27,7 +29,29 @@ public class JF_PRINCIPAL extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuUsuario = new javax.swing.JMenu();
+        jMenuItemUsuarioInserir = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenuUsuario.setText("Usuário");
+
+        jMenuItemUsuarioInserir.setText("Inserir");
+        jMenuItemUsuarioInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemUsuarioInserirActionPerformed(evt);
+            }
+        });
+        jMenuUsuario.add(jMenuItemUsuarioInserir);
+
+        jMenuBar1.add(jMenuUsuario);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,11 +61,15 @@ public class JF_PRINCIPAL extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemUsuarioInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioInserirActionPerformed
+        new JF_USUARIO().setVisible(true);
+    }//GEN-LAST:event_jMenuItemUsuarioInserirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +107,9 @@ public class JF_PRINCIPAL extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemUsuarioInserir;
+    private javax.swing.JMenu jMenuUsuario;
     // End of variables declaration//GEN-END:variables
 }

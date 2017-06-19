@@ -14,20 +14,23 @@ public class Usuario {
     private String email;
     private String senha;
     private String nome;
+    private String credencial; // Pode ser uma ENUM! (DEVE)
     
     public Usuario(){}
 
-    public Usuario(String email, String senha, String nome) {
+    public Usuario(String email, String senha, String nome, String credencial) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
+        this.credencial = credencial;
     }
 
-    public Usuario(Integer id, String email, String senha, String nome) {
+    public Usuario(Integer id, String email, String senha, String nome, String credencial) {
         this.id = id;
         this.email = email;
         this.senha = senha;
         this.nome = nome;
+        this.credencial = credencial;
     }
 
     
@@ -62,6 +65,16 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    
+    // Pode Ser 
+    public String getCredencial() {
+        return credencial;
+    }
+
+    public void setCredencial(String credencial) {
+        this.credencial = credencial;
     }
     
     
