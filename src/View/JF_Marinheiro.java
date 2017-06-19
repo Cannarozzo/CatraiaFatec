@@ -102,6 +102,11 @@ public class JF_Marinheiro extends javax.swing.JFrame {
         });
 
         jButton4.setText("Voltar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Cadastro de Marinheiro");
 
@@ -113,7 +118,6 @@ public class JF_Marinheiro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(132, 132, 132)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -192,6 +196,10 @@ public class JF_Marinheiro extends javax.swing.JFrame {
     private void marinheirosjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marinheirosjComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_marinheirosjComboBoxActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
