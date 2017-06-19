@@ -5,6 +5,9 @@
  */
 package view.usuario;
 
+import Controller.UsuarioBack;
+import Model.Usuario;
+import View.JF_LOGIN;
 import View.JF_USUARIO;
 
 /**
@@ -13,11 +16,14 @@ import View.JF_USUARIO;
  */
 public class JF_PRINCIPAL_ADMINISTRADOR extends javax.swing.JFrame {
 
+    UsuarioBack usuarioController;
+
     /**
      * Creates new form JF_PRINCIPAL
      */
     public JF_PRINCIPAL_ADMINISTRADOR() {
         initComponents();
+        this.setTitle("Administrador");
     }
 
     /**
@@ -29,12 +35,20 @@ public class JF_PRINCIPAL_ADMINISTRADOR extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuUsuario = new javax.swing.JMenu();
         jMenuItemUsuarioInserir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("Sair");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -57,11 +71,15 @@ public class JF_PRINCIPAL_ADMINISTRADOR extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 349, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jButton1)
+                .addGap(0, 256, Short.MAX_VALUE))
         );
 
         pack();
@@ -70,6 +88,11 @@ public class JF_PRINCIPAL_ADMINISTRADOR extends javax.swing.JFrame {
     private void jMenuItemUsuarioInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioInserirActionPerformed
         new JF_USUARIO().setVisible(true);
     }//GEN-LAST:event_jMenuItemUsuarioInserirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        new JF_LOGIN().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,7 +130,11 @@ public class JF_PRINCIPAL_ADMINISTRADOR extends javax.swing.JFrame {
         });
     }
 
+    public void setUsuarioBack(UsuarioBack u) {
+        this.usuarioController = u;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemUsuarioInserir;

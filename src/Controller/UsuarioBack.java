@@ -81,7 +81,8 @@ public class UsuarioBack {
     }
 
     public Usuario logarUsuario(Usuario u) {
-        return new UsuarioDAO().logar(u);
+        this.usuarioC = new UsuarioDAO().logar(u);
+        return this.usuarioC;
     }
 
 }

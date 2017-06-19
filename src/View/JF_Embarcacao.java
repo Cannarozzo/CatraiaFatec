@@ -223,7 +223,7 @@ public class JF_Embarcacao extends javax.swing.JFrame {
             Responsavel rJframe = new Responsavel();
             rJframe.setNome((String)responsaveisjComboBox2.getSelectedItem());
             Responsavel r = embarcacaoController.buscarResponsavelPorNome(rJframe);
-            JOptionPane.showMessageDialog(null, r.getId());
+            //JOptionPane.showMessageDialog(null, r.getId());
             
             Embarcacao embarcacao = new Embarcacao(Integer.parseInt(inscricaojTextField.getText()),
                     nomejTextField.getText(),

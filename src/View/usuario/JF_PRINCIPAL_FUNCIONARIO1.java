@@ -8,6 +8,7 @@ package View.usuario;
 import View.JF_Embarcacao;
 import View.JF_Marinheiro;
 import View.JF_Responsavel;
+import View.JF_Travessia;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,7 @@ public class JF_PRINCIPAL_FUNCIONARIO1 extends javax.swing.JFrame {
      */
     public JF_PRINCIPAL_FUNCIONARIO1() {
         initComponents();
+        this.setTitle("Funcionário1");
     }
 
     /**
@@ -45,6 +47,8 @@ public class JF_PRINCIPAL_FUNCIONARIO1 extends javax.swing.JFrame {
         jMenuItemAdicionarResponsavel = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemAdicionarMarinheiro = new javax.swing.JMenuItem();
+        jMenuTravessia = new javax.swing.JMenu();
+        jMenuItemTravessiaControle = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +96,18 @@ public class JF_PRINCIPAL_FUNCIONARIO1 extends javax.swing.JFrame {
         jMenu2.add(jMenuItemAdicionarMarinheiro);
 
         jMenuBar2.add(jMenu2);
+
+        jMenuTravessia.setText("Travessia");
+
+        jMenuItemTravessiaControle.setText("Controle");
+        jMenuItemTravessiaControle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTravessiaControleActionPerformed(evt);
+            }
+        });
+        jMenuTravessia.add(jMenuItemTravessiaControle);
+
+        jMenuBar2.add(jMenuTravessia);
 
         setJMenuBar(jMenuBar2);
 
@@ -142,6 +158,10 @@ public class JF_PRINCIPAL_FUNCIONARIO1 extends javax.swing.JFrame {
         new JF_Marinheiro().setVisible(true);
     }//GEN-LAST:event_jMenuItemAdicionarMarinheiroActionPerformed
 
+    private void jMenuItemTravessiaControleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTravessiaControleActionPerformed
+        new JF_Travessia().setVisible(true);
+    }//GEN-LAST:event_jMenuItemTravessiaControleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -189,6 +209,8 @@ public class JF_PRINCIPAL_FUNCIONARIO1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAdicionarEmbarcacao;
     private javax.swing.JMenuItem jMenuItemAdicionarMarinheiro;
     private javax.swing.JMenuItem jMenuItemAdicionarResponsavel;
+    private javax.swing.JMenuItem jMenuItemTravessiaControle;
+    private javax.swing.JMenu jMenuTravessia;
     private javax.swing.JLabel saudacao;
     // End of variables declaration//GEN-END:variables
 }
